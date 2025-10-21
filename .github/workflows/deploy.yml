@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --configuration=production
+        run: ng build --configuration=production
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
