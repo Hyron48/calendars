@@ -24,8 +24,8 @@ import {
   ],
   encapsulation: ViewEncapsulation.None,
   template: `
-    <div class="d-flex">
-      <div class="col-4 d-flex flex-column">
+    <div class="d-flex flex-wrap">
+      <div class="col-12 col-md-4 d-flex flex-column my-4 my-md-0">
         <h4>Selettore range - singolo calendario</h4>
         <app-prime-ng-dynamic-calendar-view [numberOfMonths]="1"
                                             (changePeriodEmitter)="onChangeSingleCalendarPeriod($event)"/>
@@ -36,7 +36,7 @@ import {
           </span>
         }
       </div>
-      <div class="col-4 d-flex flex-column">
+      <div class="col-12 col-md-4 d-flex flex-column my-4 my-md-0">
         <h4>Selettore range - doppio calendario</h4>
         <app-prime-ng-dynamic-calendar-view [numberOfMonths]="2"
                                             (changePeriodEmitter)="onChangeDoubleCalendarPeriod($event)"/>
@@ -47,7 +47,7 @@ import {
           </span>
         }
       </div>
-      <div class="col-4 d-flex flex-column">
+      <div class="col-12 col-md-4 d-flex flex-column my-4 my-md-0">
         <h4>Preset, data inizio e data fine</h4>
         <app-prime-ng-initial-end-date (changePeriodEmitter)="onChangeInitialEndDate($event)"/>
         @if (changeInitialEndDate()?.start || changeInitialEndDate()?.end) {
@@ -58,8 +58,8 @@ import {
         }
       </div>
     </div>
-    <div class="d-flex my-4">
-      <div class="col-4 d-flex flex-column">
+    <div class="d-flex flex-wrap my-4">
+      <div class="col-12 col-md-4 d-flex flex-column my-4 my-md-0">
         <h4>Modale</h4>
         <app-prime-ng-modal (changePeriodEmitter)="onModalRangePeriod($event)"/>
         @if (modalRangePeriod()?.start || modalRangePeriod()?.end) {
@@ -69,7 +69,7 @@ import {
           </span>
         }
       </div>
-      <div class="col-4 d-flex flex-column">
+      <div class="col-12 col-md-4 d-flex flex-column my-4 my-md-0">
         <h4>Modale - calendario inline</h4>
         <app-prime-ng-modal [modalDatePickerInline]="true" (changePeriodEmitter)="onModalCalendarInlineRangePeriod($event)"/>
         @if (modalCalendarInlineRangePeriod()?.start || modalCalendarInlineRangePeriod()?.end) {
@@ -79,7 +79,7 @@ import {
           </span>
         }
       </div>
-      <div class="col-4 d-flex flex-column">
+      <div class="col-12 col-md-4 d-flex flex-column my-4 my-md-0">
         <h4>OverlayPanel calendario inline</h4>
         <app-prime-overlay-panel-calendar (changePeriodEmitter)="onChangeOverlayPanelRangePeriod($event)"/>
         @if (overlayPanelRangePeriod()?.start || overlayPanelRangePeriod()?.end) {

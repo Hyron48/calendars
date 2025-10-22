@@ -12,8 +12,8 @@ import {DateRange} from '../../models/date-range';
     BootstrapRangeSelectionPopupComponent
   ],
   template: `
-    <div class="d-flex">
-      <div class="col-4 d-flex flex-column">
+    <div class="d-flex flex-wrap">
+      <div class="col-12 col-md-4 d-flex flex-column my-4 my-md-0">
         <h4>Selettore range - popup</h4>
         <app-bootstrap-range-selection-popup (changePeriodEmitter)="onChangeRangeSelectionPopup($event)"/>
         @if (rangeSelectionPopup()?.start || rangeSelectionPopup()?.end) {

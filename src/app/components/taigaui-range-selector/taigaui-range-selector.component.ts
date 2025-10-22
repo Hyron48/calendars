@@ -12,8 +12,8 @@ import {TuiRootModule} from '@taiga-ui/core';
   ],
   template: `
     <tui-root>
-      <div class="d-flex">
-        <div class="col-4 d-flex flex-column">
+      <div class="d-flex flex-wrap">
+        <div class="col-12 col-md-4 d-flex flex-column my-4 my-md-0">
           <h4>Selettore range - singolo calendario</h4>
           <app-taigaui-pre-selected-period (changePeriodEmitter)="onChangePerSelectedPeriod($event)"/>
           @if (preSelectedPeriod()?.start || preSelectedPeriod()?.end) {
