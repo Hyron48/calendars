@@ -4,6 +4,7 @@ import {DateRange} from '../../../models/date-range';
 import {DropdownChangeEvent, DropdownModule} from 'primeng/dropdown';
 import {FormsModule} from '@angular/forms';
 import {preselectedPeriods} from '../../../helpers/preselected-periods.helper';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-bootstrap-range-selection-popup',
@@ -116,6 +117,7 @@ import {preselectedPeriods} from '../../../helpers/preselected-periods.helper';
 export class BootstrapRangeSelectionPopupComponent {
   public ngbDateParserFormatter = inject(NgbDateParserFormatter);
   private ngbCalendar = inject(NgbCalendar);
+  private datePipe: DatePipe = inject(DatePipe);
 
   public changePeriodEmitter = output<DateRange>();
 
@@ -130,8 +132,8 @@ export class BootstrapRangeSelectionPopupComponent {
   constructor() {
     effect(() => {
       this.changePeriodEmitter.emit({
-        start: this.ngbDateParserFormatter.format(this.selectedRange()?.fromDate),
-        end: this.ngbDateParserFormatter.format(this.selectedRange()?.toDate)
+        start: this.datePipe.transform(this.ngbDateParserFormatter.format(this.selectedRange()?.fromDate), 'dd.MM.yyyy') ?? '',
+        end: this.datePipe.transform(this.ngbDateParserFormatter.format(this.selectedRange()?.toDate), 'dd.MM.yyyy') ?? '',
       });
     });
   }
@@ -198,8 +200,8 @@ export class BootstrapRangeSelectionPopupComponent {
     }
     this.isRangeVisible.set(false);
     const range = preselectedPeriods[value]().range;
-    const fromDate: NgbDate = new NgbDate(range[0].getFullYear(), range[0].getMonth(), range[0].getDay());
-    const toDate: NgbDate = new NgbDate(range[1].getFullYear(), range[1].getMonth(), range[1].getDay());
+    const fromDate: NgbDate = new NgbDate(range[0].getFullYear(), range[0].getMonth() + 1, range[0].getDate());
+    const toDate: NgbDate = new NgbDate(range[1].getFullYear(), range[1].getMonth() + 1, range[1].getDate());
     this.selectedRange.update(() => ({fromDate, toDate}));
   }
 }

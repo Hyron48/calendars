@@ -14,7 +14,7 @@ export const preselectedPeriods: Record<string, () => { label: string; range: Da
     const startDate = new Date(today.getFullYear(), today.getMonth() - 1, 1);
     const endDate = new Date(today.getFullYear(), today.getMonth(), 0);
     return {
-      label: 'Ultimo mese',
+      label: 'Mese precedente',
       range: [startDate, endDate],
       key: 'lastMonth'
     };
